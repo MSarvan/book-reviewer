@@ -1,0 +1,46 @@
+.reviewform {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h3 {
+    margin: 0;
+  }
+
+  .rating-div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    label {
+      width: 15%;
+    }
+  }
+
+  .comment-div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    label {
+      width: 15%;
+    }
+
+    textarea {
+      width: 85%;
+    }
+  }
+
+  button {
+    background: #100f0d;
+    color: white;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+}

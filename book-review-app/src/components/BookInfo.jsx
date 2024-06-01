@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/BookInfo.scss";
 import book from '../images/book-cover.png'
+import ReviewForm from "./ReviewForm";
 
 const BookInfo = () => {
   return (
@@ -20,6 +21,8 @@ const BookInfo = () => {
             <p>This is very useful book</p>
           </div>
         </div>
+
+        <ReviewForm />
       </div>
     </div>
   );
