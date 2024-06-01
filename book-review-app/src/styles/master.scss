@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  font-family: Montserrat !important;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: #100F0D;
+  background-color: #F5F5F5;
+  #root {
+    height: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    * {
+      font-family: Montserrat;
+      outline: none;
+      box-sizing: border-box;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
