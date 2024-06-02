@@ -13,9 +13,9 @@ const BookList = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       setIsLoading(true);
-      const response = await axios.get('http://localhost:3005/v1/books');
+      const response = await axios.get("http://localhost:3005/v1/books");
       let result = response?.data?.data;
-      console.log(result, 'books data');
+      console.log(result, "books data");
       setBooks(result);
       setIsLoading(false);
     };
@@ -26,6 +26,12 @@ const BookList = () => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+
+  const filteredBooks = books?.filter(
+    (book) =>
+      book?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+      book?.author?.toLowerCase().includes(searchTerm?.toLowerCase())
+  );
 
   return (
     <div className="booklist">
@@ -46,7 +52,7 @@ const BookList = () => {
             })
         ) : (
           <>
-            {books?.map((e, i) => {
+            {filteredBooks?.map((e, i) => {
               return (
                 <Card
                   title={e?.title}
