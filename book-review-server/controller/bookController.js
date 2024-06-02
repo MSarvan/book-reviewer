@@ -3,13 +3,13 @@ const Book = require("../model/bookModal");
 module.exports = {
   addBook: async (req, res) => {
     try {
-      const { title, author, description } = req.body;
-      if (!title || !author || !description) {
+      const { title, author, description, image } = req.body;
+      if (!title || !author || !description || !image) {
         return res
           .status(400)
           .json({ status: false, message: "All fields are mandatory" });
       }
-      const book = await Book.create({ title, author, description });
+      const book = await Book.create({ title, author, description, image });
 
       if (!book) {
         return res
