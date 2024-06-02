@@ -3,34 +3,58 @@ import "../styles/ReviewForm.scss";
 import { toast } from "react-toastify";
 
 const ReviewForm = () => {
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
+  const [reviewForm, setReviewForm] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(rating, "rating");
+    console.log(reviewForm.rating, "rating");
 
-    if (rating < 1 || rating > 5) {
+    if (reviewForm.rating < 1 || reviewForm.rating > 5) {
       toast.error("Rating must be 1-5");
       return;
     }
 
-    if (!comment) {
+    if (!reviewForm.message) {
       toast.error("Comment cannot be empty");
       return;
     }
+
+    
   };
 
   return (
     <form className="reviewform" onSubmit={handleSubmit}>
       <h3>Submit a Review</h3>
 
+      <div className="name-div">
+        <label>Name:</label>
+        <input
+          type="text"
+          value={reviewForm.name}
+          onChange={(e) =>
+            setReviewForm((prev) => {
+              return {
+                ...prev,
+                name: e.target.value,
+              };
+            })
+          }
+        />
+      </div>
+
       <div className="rating-div">
         <label>Rating:</label>
         <input
           type="number"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
+          value={reviewForm.rating}
+          onChange={(e) =>
+            setReviewForm((prev) => {
+              return {
+                ...prev,
+                rating: e.target.value,
+              };
+            })
+          }
           min="1"
           max="5"
         />
@@ -39,8 +63,15 @@ const ReviewForm = () => {
       <div className="comment-div">
         <label>Comment:</label>
         <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          value={reviewForm.message}
+          onChange={(e) =>
+            setReviewForm((prev) => {
+              return {
+                ...prev,
+                message: e.target.value,
+              };
+            })
+          }
         ></textarea>
       </div>
 
