@@ -11,7 +11,7 @@ const ReviewForm = () => {
     console.log(rating, "rating");
 
     if (rating < 1 || rating > 5) {
-      toast.error("Rating must be 1-5 stars");
+      toast.error("Rating must be 1-5");
       return;
     }
 
