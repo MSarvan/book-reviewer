@@ -9,6 +9,16 @@
     margin: 0;
   }
 
+  .name-div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    label {
+      width: 15%;
+    }
+  }
+
   .rating-div {
     display: flex;
     gap: 1rem;
