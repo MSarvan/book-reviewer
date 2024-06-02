@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/BookInfo.scss";
 import ReviewForm from "./ReviewForm";
 import LoadingInfo from "./LoadingInfo";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const BookInfo = () => {
@@ -21,7 +21,19 @@ const BookInfo = () => {
     };
 
     fetchBookDetails();
-  }, [id])
+  }, [id]);
+
+  const calculateOverallRating = () => {
+    if (book?.reviews?.length > 0) {
+      const totalRating = book.reviews.reduce(
+        (acc, review) => acc + review.rating,
+        0
+      );
+      return (totalRating / book.reviews.length).toFixed(1);
+    } else {
+      return "No ratings yet";
+    }
+  };
 
   return (
     <div className="bookinfo">
@@ -36,15 +48,33 @@ const BookInfo = () => {
           </div>
           <div className="book-details">
             <h1>{book?.title}</h1>
-            <p>By {book?.author}</p>
-            <p>Description: {book?.description}</p>
-            <p>Ratings: 3.5</p>
+            <div className="authour-details">
+              <div>By</div>
+              <div className="author-name">{book?.author}</div>
+            </div>
+            <p style={{ textAlign: "center" }}>
+              Description: {book?.description}
+            </p>
+            <p className="overall-ratings">
+              Overall Ratings: {calculateOverallRating()}
+            </p>
             <div className="user-reviews">
               <h2>User Reviews</h2>
-              <div className="each-review">
-                <p>Rating: 4</p>
-                <p>This is very useful book</p>
-              </div>
+              {book?.reviews?.length > 0 ? (
+                book?.reviews?.map((e, i) => {
+                  return (
+                    <div className="each-review" key={i}>
+                      <p>Name: {e?.name}</p>
+                      <p>Rating: {e?.rating}</p>
+                      <p>Comment: {e?.message}</p>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="each-review">
+                  <p>Be the first to review the book!</p>
+                </div>
+              )}
             </div>
 
             <ReviewForm bookId={id} />
