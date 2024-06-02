@@ -1,12 +1,28 @@
 import React, { useState } from "react";
 import "../styles/ReviewForm.scss";
+import { toast } from "react-toastify";
 
 const ReviewForm = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(rating, "rating");
+
+    if (rating < 1 || rating > 5) {
+      toast.error("Rating must be 1-5 stars");
+      return;
+    }
+
+    if (!comment) {
+      toast.error("Comment cannot be empty");
+      return;
+    }
+  };
+
   return (
-    <form className="reviewform">
+    <form className="reviewform" onSubmit={handleSubmit}>
       <h3>Submit a Review</h3>
 
       <div className="rating-div">

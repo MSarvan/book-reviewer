@@ -5,7 +5,7 @@ import ReviewForm from "./ReviewForm";
 import LoadingInfo from "./LoadingInfo";
 
 const BookInfo = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className="bookinfo">

@@ -6,7 +6,7 @@ import LoadingCard from "./LoadingCard";
 const BookList = () => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);

@@ -12,7 +12,7 @@ const LoadingInfo = () => {
         <Skeleton width={200} height={40} />
         <Skeleton width={400} height={35} />
         <Skeleton width={500} height={80} />
-        <Skeleton width={100} height={35} />
+        <Skeleton width={150} height={35} />
         <div className="user-reviews">
           <Skeleton width={200} height={40} />
           <div className="each-review">
