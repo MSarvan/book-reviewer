@@ -3,12 +3,12 @@ import "../styles/ReviewForm.scss";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const ReviewForm = (bookId) => {
+const ReviewForm = ({ bookId }) => {
   const [reviewForm, setReviewForm] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(reviewForm.rating, "rating");
+    console.log(reviewForm, "reviewForm");
 
     if (reviewForm.rating < 1 || reviewForm.rating > 5) {
       toast.error("Rating must be 1-5");
@@ -20,21 +20,22 @@ const ReviewForm = (bookId) => {
       return;
     }
 
-    if(!reviewForm.name) {
+    if (!reviewForm.name) {
       toast.error("Please enter your name");
       return;
     }
-    
-    axios.post(`http://localhost:3005/v1/reviews/${bookId}`, reviewForm)
-      .then(response => {
+
+    axios
+      .post(`http://localhost:3005/v1/reviews/${bookId}`, reviewForm)
+      .then((response) => {
         if (response.data.error) {
           toast.error(response.data.error);
         } else {
-          toast.success('Review submitted successfully');
-          setReviewForm({ rating: 0, comment: '', name: '' });
+          toast.success("Review submitted successfully");
+          setReviewForm({ rating: 0, comment: "", name: "" });
         }
       })
-      .catch(error => toast.error('Error submitting review'));
+      .catch((error) => toast.error("Error submitting review"));
   };
 
   return (

@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/BookInfo.scss";
-import book from "../images/book-cover.png";
 import ReviewForm from "./ReviewForm";
 import LoadingInfo from "./LoadingInfo";
+import { useParams } from 'react-router-dom';
+import axios from "axios";
 
 const BookInfo = () => {
+  const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
+  const [book, setBook] = useState(null);
+
+  useEffect(() => {
+    const fetchBookDetails = async () => {
+      setIsLoading(true);
+      const response = await axios.get(`http://localhost:3005/v1/books/${id}`);
+      let result = response?.data?.data;
+      console.log(result, "book details");
+      setBook(result);
+      setIsLoading(false);
+    };
+
+    fetchBookDetails();
+  }, [id])
 
   return (
     <div className="bookinfo">
@@ -16,12 +32,12 @@ const BookInfo = () => {
       ) : (
         <>
           <div className="book-coverImg">
-            <img src={book} alt="" />
+            <img src={book?.image} alt="" />
           </div>
           <div className="book-details">
-            <h1>Book Title</h1>
-            <p>Book Author</p>
-            <p>Book description</p>
+            <h1>{book?.title}</h1>
+            <p>By {book?.author}</p>
+            <p>Description: {book?.description}</p>
             <p>Ratings: 3.5</p>
             <div className="user-reviews">
               <h2>User Reviews</h2>
@@ -31,7 +47,7 @@ const BookInfo = () => {
               </div>
             </div>
 
-            <ReviewForm />
+            <ReviewForm bookId={id} />
           </div>
         </>
       )}

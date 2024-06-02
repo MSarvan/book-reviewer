@@ -29,6 +29,7 @@ module.exports = {
       });
     }
   },
+
   getBooks: async (req, res) => {
     try {
       const books = await Book.find({}).populate("reviews");
@@ -49,6 +50,29 @@ module.exports = {
       });
     }
   },
+
+  getBooksById: async (req, res) => {
+    try {
+      const bookId = req.params.id;
+      const book = await Book.findById(bookId).populate("reviews");
+
+      if (!book) {
+        return res
+          .status(404)
+          .json({ status: false, message: "No book with given id found" });
+      }
+      return res
+        .status(200)
+        .json({ status: true, message: "Book details found", data: book });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        status: false,
+        message: "Internal server error while fetching book data",
+      });
+    }
+  },
+
   deleteBook: async (req, res) => {
     try {
       const bookId = req.params.id;
