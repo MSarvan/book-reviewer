@@ -13,6 +13,16 @@
       height: 100%;
       max-width: 100%;
     }
+
+    .image-loader {
+      height: 100%;
+      width: 100%;
+
+      span {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 
   .book-details {
@@ -45,8 +55,43 @@
       font-weight: 600;
     }
 
+    .book-details1 {
+      width: 70%;
+      height: 60px;
+      span {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .book-details2 {
+      width: 300px;
+      height: 35px;
+      span {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .book-details3 {
+      width: 85%;
+      height: 250px;
+      span {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .book-details4 {
+      width: 150px;
+      height: 35px;
+      span {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
     .user-reviews {
-      // margin-top: 2rem;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -60,6 +105,26 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+      }
+
+      .user-review-heading {
+        width: 200px;
+        height: 40px;
+
+        span {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .user-review-loader {
+        width: 500px;
+        height: 30px;
+
+        span {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
@@ -75,6 +140,13 @@
       display: flex;
       justify-content: center;
 
+      .image-loader {
+        height: 30vh;
+        span {
+          height: 100%;
+        }
+      }
+
       img {
         max-width: 100%;
         height: 100%;
@@ -85,6 +157,28 @@
       width: 100%;
       height: auto;
       overflow-y: initial;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .book-coverImg {
+      .image-loader {
+        height: 40vh;
+      }
+    }
+
+    .book-details {
+      .book-details3 {
+        width: 100%;
+      }
+    }
+
+    .user-reviews {
+      .each-review {
+        .user-review-loader {
+          width: 100%;
+        }
+      }
     }
   }
 

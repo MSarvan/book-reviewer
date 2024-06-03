@@ -3,25 +3,26 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const LoadingInfo = () => {
+
   return (
     <>
       <div className="book-coverImg">
-        <Skeleton width={"100%"} height={'100%'} />
+        <Skeleton containerClassName="image-loader" />
       </div>
       <div className="book-details">
-        <Skeleton width={200} height={40} />
-        <Skeleton width={400} height={35} />
-        <Skeleton width={500} height={80} />
-        <Skeleton width={150} height={35} />
+        <Skeleton containerClassName='book-details1' />
+        <Skeleton containerClassName='book-details2' />
+        <Skeleton containerClassName='book-details3' />
+        <Skeleton containerClassName='book-details4' />
         <div className="user-reviews">
-          <Skeleton width={200} height={40} />
+          <Skeleton containerClassName='user-review-heading' />
           <div className="each-review">
-            <Skeleton width={500} height={30} />
-            <Skeleton width={500} height={30} />
+            <Skeleton containerClassName="user-review-loader" />
+            <Skeleton containerClassName="user-review-loader" />
           </div>
           <div className="each-review">
-            <Skeleton width={500} height={30} />
-            <Skeleton width={500} height={30} />
+            <Skeleton containerClassName="user-review-loader" />
+            <Skeleton containerClassName="user-review-loader" />
           </div>
         </div>
       </div>
