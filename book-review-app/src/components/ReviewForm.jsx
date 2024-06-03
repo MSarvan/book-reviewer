@@ -26,7 +26,7 @@ const ReviewForm = ({ bookId }) => {
     }
 
     axios
-      .post(`http://localhost:3005/v1/reviews/${bookId}`, reviewForm)
+      .post(`https://book-reviewer.onrender.com/v1/reviews/${bookId}`, reviewForm)
       .then((response) => {
         if (response.data.error) {
           toast.error(response.data.error);

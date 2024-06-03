@@ -13,7 +13,7 @@ const BookList = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:3005/v1/books");
+      const response = await axios.get("https://book-reviewer.onrender.com/v1/books");
       let result = response?.data?.data;
       console.log(result, "books data");
       setBooks(result);

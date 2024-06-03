@@ -13,7 +13,7 @@ const BookInfo = () => {
   useEffect(() => {
     const fetchBookDetails = async () => {
       setIsLoading(true);
-      const response = await axios.get(`http://localhost:3005/v1/books/${id}`);
+      const response = await axios.get(`https://book-reviewer.onrender.com/v1/books/${id}`);
       let result = response?.data?.data;
       console.log(result, "book details");
       setBook(result);
